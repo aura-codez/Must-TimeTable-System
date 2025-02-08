@@ -58,18 +58,20 @@ include 'config/database.php';
 </section>
 
 <!-- Testimonials Section -->
-<section id="testimonials" class="container text-light p-5 mt-5 rounded" style="background-color: #222;">
-    <h2 class="text-center fw-bold text-warning">What People Say</h2>
-    <div id="testimonialCarousel" class="carousel slide mt-4" data-bs-ride="carousel">
+<section id="testimonials" class="container text-light p-4 mt-4 bg-dark rounded">
+    <h2 class="text-center">What People Say</h2>
+
+    <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <?php
-            $query = $conn->query("SELECT name, feedback FROM testimonials ORDER BY created_at DESC LIMIT 5");
+            $stmt = $conn->query("SELECT name, feedback, profile_pic FROM testimonials ORDER BY created_at DESC LIMIT 5");
             $first = true;
-            while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 echo '<div class="carousel-item ' . ($first ? 'active' : '') . '">';
-                echo '<div class="testimonial text-center p-3 bg-dark rounded shadow">';
-                echo '<p class="fs-5">"' . $row['feedback'] . '"</p>';
-                echo '<h4 class="fw-bold text-warning">- ' . $row['name'] . '</h4>';
+                echo '<div class="card bg-secondary text-white p-3 text-center">';
+                echo '<img src="' . $row['profile_pic'] . '" alt="User Avatar" class="rounded-circle mx-auto d-block" width="80">';
+                echo '<p class="mt-3">"' . $row['feedback'] . '"</p>';
+                echo '<h4>- ' . $row['name'] . '</h4>';
                 echo '</div></div>';
                 $first = false;
             }
@@ -82,7 +84,29 @@ include 'config/database.php';
             <span class="carousel-control-next-icon"></span>
         </button>
     </div>
+
+
+
+
+
+
+
+
+      
+
+ <!-- Add Feedback Form -->
+<div class="mt-4">
+    <h3 class="text-center">Submit Your Feedback</h3>
+    <form method="POST" action="logic/add-feedback.php">
+        <input type="text" name="name" class="form-control mb-2" placeholder="Your Name" required>
+        <textarea name="feedback" class="form-control mb-2" placeholder="Your Feedback" required></textarea>
+        <button type="submit" class="btn btn-warning">Submit</button>
+    </form>
+</div>
+
+
 </section>
+
 
 <!-- Contact Section -->
 <section id="contact" class="container text-light p-5 mt-5 rounded" style="background-color: #1c1c1c;">
@@ -93,8 +117,8 @@ include 'config/database.php';
 <!-- Footer -->
 <footer class="text-center text-light p-4 mt-5" style="background-color: #111;">
     <p>Follow us: 
-        <a href="https://www.instagram.com/mustofficial" class="text-decoration-none text-warning">Instagram</a> | 
-        <a href="https://www.facebook.com/mustofficial" class="text-decoration-none text-warning">Facebook</a> | 
+        <a href="https://www.instagram.com/must_university-officially?igsh=MWp0ZXp5dHFuZWox" class="text-decoration-none text-warning">Instagram</a> | 
+        <a href="https://www/facebook.com/profile.php?id=100079274237254" class="text-decoration-none text-warning">Facebook</a> | 
         <a href="https://www.must.edu.pk" class="text-decoration-none text-warning">Official Website</a>
     </p>
     <p>Created by Muqadas Meherban & Ahmed Ali (Session 22-25, Mirpur University of Science and Technology).</p>

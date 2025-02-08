@@ -4,7 +4,7 @@ session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
-    $password = md5($_POST['password']); // Password is stored as MD5 hash
+    $password = md5($_POST['password']); // Hash password
     $role = $_POST['role'];
 
     $stmt = $conn->prepare("SELECT * FROM users WHERE email = ? AND password = ? AND role = ?");
@@ -17,6 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['role'] = $user['role'];
         $_SESSION['department'] = $user['department'];
 
+        // Redirect users based on their role
         if ($role == "admin") {
             header("Location: ../admin/dashboard.php");
         } elseif ($role == "teacher") {
@@ -34,8 +35,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <?php include '../../components/guest-header.php'; ?>
 
 <div class="container mt-5">
-    <h2 class="text-center">Login</h2>
-    <form method="POST">
+    <h2 class="text-center text-light">Login</h2>
+    <form method="POST" class="bg-dark p-4 rounded text-light">
         <label>Email:</label>
         <input type="email" name="email" class="form-control mb-2" required>
         
@@ -49,9 +50,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <option value="student">Student</option>
         </select>
         
-        <button type="submit" class="btn btn-primary">Login</button>
+        <button type="submit" class="btn btn-warning w-100">Login</button>
     </form>
-    <p class="text-center mt-3">Don't have an account? <a href="register.php">Register Here</a></p>
+    <p class="text-center mt-3 text-light">Don't have an account? <a href="register.php" class="text-warning">Register Here</a></p>
 </div>
 
 <?php include '../../components/guest-footer.php'; ?>

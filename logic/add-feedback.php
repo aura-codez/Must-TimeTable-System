@@ -1,7 +1,7 @@
 <?php
-include '../config/database.php';
+include '../config/database.php';  
 
-$defaultAvatar = "https://www.gravatar.com/avatar/00000000000000000000000000000000?s=80&d=identicon";
+$defaultAvatar = "https://th.bing.com/th?q=Gender-Neutral+Icon+Avatar&w=120&h=120&c=1&rs=1&qlt=90&cb=1&pid=InlineBlock&mkt=en-WW&cc=PK&setlang=en&adlt=moderate&t=1&mw=247";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = htmlspecialchars($_POST['name']);
@@ -16,7 +16,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             die("Error inserting feedback: " . implode(" - ", $stmt->errorInfo()));
         }
-
     } else {
         header("Location: ../index.php?error=empty");
         exit();

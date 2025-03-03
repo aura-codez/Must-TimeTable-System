@@ -1,23 +1,27 @@
 <?php include '../../components/student-header.php'; ?>
-<div class="container mt-5">
-    <h2 class="text-center">Student Dashboard</h2>
-    <div class="row">
-        <div class="col-md-4">
-            <a href="view-timetable.php" class="btn btn-primary btn-block">View Timetable</a>
-        </div>
-        <div class="col-md-4">
-            <a href="request-change.php" class="btn btn-warning btn-block">Request Timetable Change</a>
-        </div>
-        <div class="col-md-4">
-            <a href="subscribe.php" class="btn btn-success btn-block">Subscribe for Full Access</a>
-        </div>
-        <div class="col-md-4">
-    <a href="../../logic/generate-pdf.php" class="btn btn-info btn-block">Download Timetable PDF</a>
-</div>
-<div class="col-md-4">
-    <a href="../../logic/whatsapp-share.php" class="btn btn-success btn-block">Share on WhatsApp</a>
-</div>
 
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2 p-0">
+            <?php include '../../components/sidebar-student.php'; ?>
+        </div>
+        <div class="col-md-10 p-4">
+            <h2 class="text-warning text-center mb-4">Welcome, Student</h2>
+            <p class="text-light text-center mb-5">View your department's timetable here.</p>
+
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card bg-dark text-light p-3 rounded shadow-lg">
+                        <h4 class="text-warning text-center">View Timetable</h4>
+                        <p class="text-light text-center">Check your department's confirmed timetable.</p>
+                        <div class="text-center">
+                            <a href="view-timetables.php" class="btn btn-warning">View Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
 <?php include '../../components/student-footer.php'; ?>

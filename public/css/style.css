@@ -1,0 +1,90 @@
+/* ================= Sidebar Styling ================= */
+.sidebar {
+    height: 100vh;
+    width: 220px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    color: white;
+    padding-top: 20px;
+    overflow-y: auto;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar .nav-link {
+    padding: 10px;
+    color: white;
+    transition: 0.3s;
+}
+
+.sidebar .nav-link:hover {
+    background-color: #ffc107;
+    color: black !important;
+    transition: 0.3s;
+}
+
+/* ================= Main Content Styling ================= */
+.main-content {
+    margin-left: 230px;
+    padding: 20px;
+    width: calc(100% - 230px);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ================= Fix Sidebar Sticking on Scroll ================= */
+@media (min-width: 992px) {
+    .sidebar {
+        position: fixed;
+        height: 100vh;
+        top: 0;
+        left: 0;
+    }
+
+    .main-content {
+        margin-left: 230px;
+    }
+}
+
+/* ================= Fix Text Overflow ================= */
+.table {
+    width: 100%;
+    table-layout: fixed;
+    word-wrap: break-word;
+}
+
+.card {
+    max-width: 100%;
+    word-wrap: break-word;
+}
+
+/* ================= Navbar Styling ================= */
+.navbar {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-nav .nav-link {
+    color: white !important;
+    transition: 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+    background-color: #ffc107;
+    color: black !important;
+}
+
+/* ================= Responsive Adjustments ================= */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        position: relative;
+    }
+    .main-content {
+        margin-left: 0;
+    }
+}

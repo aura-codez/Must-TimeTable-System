@@ -1,13 +1,13 @@
-<?php 
-include 'config.php'; 
-include 'config/database.php'; 
+<?php
+include 'config.php';
+include 'config/database.php';
 ?>
 <?php include 'components/guest-header.php'; ?>
 <?php include 'components/popup-notification.php'; ?>
 
 <!-- Hero Banner with Background Image -->
-<div class="hero-banner text-center text-white d-flex align-items-end justify-content-center" 
-     style="background: url('public/images/MUST-Hero-Banner.jpg') no-repeat center center/cover; height: 80vh;">
+<div class="hero-banner text-center text-white d-flex align-items-end justify-content-center"
+    style="background: url('public/images/MUST-Hero-Banner.jpg') no-repeat center center/cover; height: 80vh;">
     <div style="background: rgba(0, 0, 0, 0.6); padding: 20px; border-radius: 10px;">
         <h1 class="fw-bold text-warning">Welcome to MUST Timetable Management System</h1>
         <p class="fs-5 text-light">Automating timetable scheduling for Mirpur University of Science and Technology.</p>
@@ -22,7 +22,8 @@ include 'config/database.php';
         <div class="col-md-6">
             <h2 class="fw-bold text-warning">About MUST Timetable System</h2>
             <p>
-                The MUST Timetable System helps students, teachers, and administrators efficiently manage university schedules,
+                The MUST Timetable System helps students, teachers, and administrators efficiently manage university
+                schedules,
                 ensuring conflict-free classes and seamless timetable creation.
             </p>
         </div>
@@ -92,17 +93,17 @@ include 'config/database.php';
 
 
 
-      
 
- <!-- Add Feedback Form -->
-<div class="mt-4">
-    <h3 class="text-center">Submit Your Feedback</h3>
-    <form method="POST" action="logic/add-feedback.php">
-        <input type="text" name="name" class="form-control mb-2" placeholder="Your Name" required>
-        <textarea name="feedback" class="form-control mb-2" placeholder="Your Feedback" required></textarea>
-        <button type="submit" class="btn btn-warning">Submit</button>
-    </form>
-</div>
+
+    <!-- Add Feedback Form -->
+    <div class="mt-4">
+        <h3 class="text-center">Submit Your Feedback</h3>
+        <form method="POST" action="logic/add-feedback.php">
+            <input type="text" name="name" class="form-control mb-2" placeholder="Your Name" required>
+            <textarea name="feedback" class="form-control mb-2" placeholder="Your Feedback" required></textarea>
+            <button type="submit" class="btn btn-warning">Submit</button>
+        </form>
+    </div>
 
 
 </section>
@@ -116,9 +117,11 @@ include 'config/database.php';
 
 <!-- Footer -->
 <footer class="text-center text-light p-4 mt-5" style="background-color: #111;">
-    <p>Follow us: 
-        <a href="https://www.instagram.com/must_university-officially?igsh=MWp0ZXp5dHFuZWox" class="text-decoration-none text-warning">Instagram</a> | 
-        <a href="https://www/facebook.com/profile.php?id=100079274237254" class="text-decoration-none text-warning">Facebook</a> | 
+    <p>Follow us:
+        <a href="https://www.instagram.com/must_university-officially?igsh=MWp0ZXp5dHFuZWox"
+            class="text-decoration-none text-warning">Instagram</a> |
+        <a href="https://www/facebook.com/profile.php?id=100079274237254"
+            class="text-decoration-none text-warning">Facebook</a> |
         <a href="https://www.must.edu.pk" class="text-decoration-none text-warning">Official Website</a>
     </p>
     <p>Created by Muqadas Meherban & Ahmed Ali (Session 22-25, Mirpur University of Science and Technology).</p>

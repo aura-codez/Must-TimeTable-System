@@ -1,5 +1,5 @@
 <?php
-include '../config/database.php';  
+include '../config/database.php';
 
 $defaultAvatar = "https://www.gravatar.com/avatar/00000000000000000000000000000000?s=80&d=identicon";
 
@@ -16,6 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             die("Error inserting feedback: " . implode(" - ", $stmt->errorInfo()));
         }
+
     } else {
         header("Location: ../index.php?error=empty");
         exit();

@@ -15,6 +15,7 @@
             </tr>
         </thead>
         <tbody>
+
             <?php
             $stmt = $conn->query("SELECT t.*, c.course_name, r.room_name, u.name AS teacher_name 
                                   FROM timetable t 

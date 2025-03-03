@@ -12,11 +12,11 @@
             <a href="view-payments.php" class="btn btn-primary btn-block">View Payments</a>
         </div>
         <div class="col-md-4">
-    <a href="../../logic/generate-pdf.php" class="btn btn-info btn-block">Download Timetable PDF</a>
-</div>
-<div class="col-md-4">
-    <a href="../../logic/whatsapp-share.php" class="btn btn-success btn-block">Share on WhatsApp</a>
-</div>
+            <a href="../../logic/generate-pdf.php" class="btn btn-info btn-block">Download Timetable PDF</a>
+        </div>
+        <div class="col-md-4">
+            <a href="../../logic/whatsapp-share.php" class="btn btn-success btn-block">Share on WhatsApp</a>
+        </div>
 
     </div>
 </div>

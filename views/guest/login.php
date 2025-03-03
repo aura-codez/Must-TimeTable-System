@@ -39,20 +39,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <form method="POST" class="bg-dark p-4 rounded text-light">
         <label>Email:</label>
         <input type="email" name="email" class="form-control mb-2" required>
-        
+
         <label>Password:</label>
         <input type="password" name="password" class="form-control mb-2" required>
-        
+
         <label>Select Role:</label>
         <select name="role" class="form-control mb-2" required>
             <option value="admin">Admin</option>
             <option value="teacher">Teacher</option>
             <option value="student">Student</option>
         </select>
-        
+
         <button type="submit" class="btn btn-warning w-100">Login</button>
     </form>
-    <p class="text-center mt-3 text-light">Don't have an account? <a href="register.php" class="text-warning">Register Here</a></p>
+    <p class="text-center mt-3 text-light">Don't have an account? <a href="register.php" class="text-warning">Register
+            Here</a></p>
 </div>
 
 <?php include '../../components/guest-footer.php'; ?>

@@ -7,36 +7,70 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = md5($_POST['password']); // Hash password
     $role = $_POST['role'];
 
-    $stmt = $conn->prepare("SELECT * FROM users WHERE email = ? AND password = ? AND role = ?");
+    // Fetch user details including department_id (and optionally department name)
+    $stmt = $conn->prepare("SELECT u.id, u.role, u.department_id, d.name AS department_name 
+                            FROM users u 
+                            LEFT JOIN departments d ON u.department_id = d.id 
+                            WHERE u.email = ? AND u.password = ? AND u.role = ?");
     $stmt->execute([$email, $password, $role]);
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($user) {
         $_SESSION['user_id'] = $user['id'];
-        $_SESSION['name'] = $user['name'];
         $_SESSION['role'] = $user['role'];
-        $_SESSION['department'] = $user['department'];
 
-        // Redirect users based on their role
-        if ($role == "admin") {
-            header("Location: ../admin/dashboard.php");
-        } elseif ($role == "teacher") {
-            header("Location: ../teacher/dashboard.php");
-        } elseif ($role == "student") {
-            header("Location: ../student/dashboard.php");
+        // Store department name or "Unknown" if not applicable
+        if (!empty($user['department_name'])) {
+            $_SESSION['department'] = $user['department_name'];
+        } else {
+            $_SESSION['department'] = "Unknown";
         }
+
+        // Redirect based on role
+        $redirects = [
+            "superadmin" => "../superadmin/dashboard.php",
+            "admin" => "../admin/dashboard.php",
+            "teacher" => "../teacher/dashboard.php",
+            "student" => "../student/dashboard.php"
+        ];
+
+        header("Location: " . $redirects[$role]);
         exit();
     } else {
-        echo "<script>alert('Invalid credentials or role selection!');</script>";
+        echo "<script>alert('❌ Invalid credentials or role selection!');</script>";
     }
 }
 ?>
 
 <?php include '../../components/guest-header.php'; ?>
+<!-- Bootstrap CDN -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-<div class="container mt-5">
-    <h2 class="text-center text-light">Login</h2>
-    <form method="POST" class="bg-dark p-4 rounded text-light">
+<!-- Custom Styling -->
+<style>
+    body {
+        background-color: #1a1a1a;
+        color: white;
+    }
+    .login-container {
+        max-width: 400px;
+        margin: 50px auto;
+        background-color: #222;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    }
+    .btn-warning:hover {
+        background-color: #e0a800 !important;
+        transition: 0.3s;
+    }
+</style>
+
+<!-- Login Form -->
+<div class="login-container text-light">
+    <h2 class="text-center text-warning">Login</h2>
+    <form method="POST">
         <label>Email:</label>
         <input type="email" name="email" class="form-control mb-2" required>
 
@@ -45,15 +79,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <label>Select Role:</label>
         <select name="role" class="form-control mb-2" required>
-            <option value="admin">Admin</option>
+            <option value="superadmin">Super Admin</option>
+            <option value="admin">Department Admin</option>
             <option value="teacher">Teacher</option>
             <option value="student">Student</option>
         </select>
 
         <button type="submit" class="btn btn-warning w-100">Login</button>
     </form>
-    <p class="text-center mt-3 text-light">Don't have an account? <a href="register.php" class="text-warning">Register
-            Here</a></p>
 </div>
-
 <?php include '../../components/guest-footer.php'; ?>

@@ -1,10 +1,4 @@
-<?php
-session_start();
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'superadmin') {
-    header("Location: ../../views/guest/login.php");
-    exit();
-}
-?>
+
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">

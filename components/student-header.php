@@ -12,15 +12,8 @@
                 <li class="nav-item">
                     <a class="nav-link text-light" href="/MUST-Timetable-System/views/student/dashboard.php">🏠 Dashboard</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-light" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown">
-                        <img src="/MUST-Timetable-System/public/images/default-avatar.png" class="rounded-circle" width="30"> Profile
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="/MUST-Timetable-System/views/student/profile.php">👤 Profile</a></li>
-                        <li><a class="dropdown-item text-danger" href="/MUST-Timetable-System/logout.php">🚪 Logout</a></li>
-                    </ul>
-                </li>
+                
+               
             </ul>
         </div>
     </div>

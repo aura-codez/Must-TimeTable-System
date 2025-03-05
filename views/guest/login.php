@@ -3,9 +3,12 @@ include '../../config/database.php';
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $input = $_POST['email']; // This will be email or roll_no depending on role
-    $password = md5($_POST['password']); // Hash password
-    $role = $_POST['role'];
+    $input = isset($_POST['email']) ? $_POST['email'] : ''; // Email or roll_no
+    $password = md5(isset($_POST['password']) ? $_POST['password'] : ''); // Hash password
+    $role = isset($_POST['role']) ? $_POST['role'] : ''; // Role
+
+    // Debugging: Log what’s received
+    echo "<script>console.log('Received: Role: \"$role\", Input: \"$input\", Password: [hashed]');</script>";
 
     // Use different column based on role
     if ($role === 'student') {
@@ -81,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <h2 class="text-center text-warning">Login</h2>
     <form method="POST" onsubmit="return validateForm()">
         <label>Select Role:</label>
-        <select name="role" id="roleSelect" class="form-control mb-2" required onchange="toggleInputField()">
+        <select name="role" id="roleSelect" class="form-control mb-2" onchange="toggleInputField()">
             <option value="" disabled selected>Select a role</option>
             <option value="superadmin">Super Admin</option>
             <option value="admin">Department Admin</option>
@@ -91,16 +94,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <div id="emailField" style="display: block;">
             <label>Email:</label>
-            <input type="email" name="email" id="email" class="form-control mb-2" placeholder="Enter your email" required>
+            <input type="email" name="email" id="email" class="form-control mb-2" placeholder="Enter your email">
         </div>
 
         <div id="rollNoField" style="display: none;">
             <label>Roll Number:</label>
-            <input type="text" id="roll_no" class="form-control mb-2" placeholder="e.g., FA22-BSE-020" required>
+            <input type="text" id="roll_no" name="roll_no" class="form-control mb-2" placeholder="e.g., FA22-BSE-020">
         </div>
 
         <label>Password:</label>
-        <input type="password" name="password" class="form-control mb-2" required>
+        <input type="password" name="password" id="password" class="form-control mb-2" required>
 
         <button type="submit" class="btn btn-warning w-100">Login</button>
     </form>
@@ -109,31 +112,56 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             var role = document.getElementById("roleSelect").value;
             var emailField = document.getElementById("emailField");
             var rollNoField = document.getElementById("rollNoField");
+            var emailInput = document.getElementById("email");
+            var rollNoInput = document.getElementById("roll_no");
 
             if (role === "student") {
                 emailField.style.display = "none";
                 rollNoField.style.display = "block";
+                emailInput.removeAttribute("required"); // Remove required when hidden
+                rollNoInput.setAttribute("required", "required");
             } else {
                 emailField.style.display = "block";
                 rollNoField.style.display = "none";
+                emailInput.setAttribute("required", "required");
+                rollNoInput.removeAttribute("required"); // Remove required when hidden
             }
         }
 
         function validateForm() {
             var role = document.getElementById("roleSelect").value;
             var emailInput = document.getElementById("email");
+            var rollNoInput = document.getElementById("roll_no");
+            var password = document.getElementById("password").value;
+
+            if (!role) {
+                alert("Please select a role!");
+                return false;
+            }
 
             if (role === "student") {
-                var rollNo = document.getElementById("roll_no").value;
+                var rollNo = rollNoInput.value;
                 var rollNoRegex = /^FA[0-9]{2}-(BSE|BCS|BIT)-[0-9]{3}$/;
-                if (!rollNoRegex.test(rollNo)) {
+                if (!rollNo || !rollNoRegex.test(rollNo)) {
                     alert("Invalid roll number! It must be in the format FA[year]-[program]-[roll], e.g., FA22-BSE-020.");
                     return false;
                 }
-                // Copy roll number to email field for submission
-                emailInput.value = rollNo;
+                emailInput.value = rollNo; // Copy roll number to email field for submission
+            } else {
+                var email = emailInput.value;
+                if (!email) {
+                    alert("Please enter an email!");
+                    return false;
+                }
             }
 
+            if (!password) {
+                alert("Please enter a password!");
+                return false;
+            }
+
+            // Debug: Show what’s being submitted
+            console.log("Submitting: Role: " + role + ", Email/Roll No: " + emailInput.value + ", Password: [hidden]");
             return true;
         }
     </script>

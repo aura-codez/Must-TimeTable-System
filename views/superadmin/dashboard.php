@@ -5,17 +5,16 @@
         <div class="col-md-2 p-0">
             <?php include '../../components/sidebar-superadmin.php'; ?>
         </div>
-        <div class="col-md-10 p-4">
-            <h2 class="text-warning">Welcome, Super Admin</h2>
-            <p class="text-light">Manage users and departments.</p>
-            <div class="row mt-4">
-                <div class="col-md-6">
-                    <div class="card bg-dark text-light p-3 rounded shadow-lg">
-                        <h4 class="text-warning">Manage Users & Departments</h4>
-                        <p>Add, enable, disable users, and manage departments.</p>
-                        <a href="manage-admins.php" class="btn btn-warning">Go to Management</a>
-                    </div>
-                </div>
+        <div class="col-md-10 p-4 d-flex flex-column align-items-center" style="min-height: 100vh;">
+            <!-- Welcome message outside container -->
+            <h2 class="text-warning mt-4">Welcome, Super Admin</h2>
+            <p class="text-light">Manage your admin team efficiently.</p>
+
+            <!-- Improved container -->
+            <div class="card bg-dark text-light p-4 mt-4 rounded shadow-lg" style="max-width: 600px; width: 100%; border: 2px solid #ffc107;">
+                <h4 class="text-warning text-center mb-3">Admin Management</h4>
+                <p class="text-center mb-4">View, add, update, or enable/disable admins and their details.</p>
+                <a href="manage-admins.php" class="btn btn-warning btn-lg w-100">Go to Admin Management</a>
             </div>
         </div>
     </div>

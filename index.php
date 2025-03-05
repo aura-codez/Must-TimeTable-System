@@ -63,11 +63,11 @@ try {
 </div>
 
 <!-- About Section -->
-<section id="about" class="container-md text-light section">
+<section id="about" class="container-md text-light section" >
     <div class="row align-items-center">
         <div class="col-md-6 text-center">
-            <h2 class="fw-bold text-warning">About MUST Timetable System</h2>
-            <p>
+            <h2 class="fw-bold text-warning" style="padding:50px">About MUST Timetable System</h2>
+            <p style="padding:0 60px">
                 The MUST Timetable System helps students, teachers, and administrators efficiently manage university schedules,
                 ensuring conflict-free classes and seamless timetable creation.
             </p>
@@ -79,7 +79,7 @@ try {
 </section>
 
 <!-- Services Section -->
-<section id="services" class="container text-light section">
+<section id="services" class="container-md text-light section">
     <h2 class="text-center fw-bold text-warning">Our Services</h2>
     <div class="row text-center mt-3">
         <div class="col-md-4">
@@ -95,7 +95,7 @@ try {
             </div>
         </div>
         <div class="col-md-4">
-            <div class="p-3 bg-dark rounded shadow-lg">
+            <div class="p-3 h-100 bg-dark rounded shadow-lg">
                 <h4 class="text-warning">Download Timetable</h4>
                 <p>Download your timetable as a PDF file for easy access.</p>
             </div>
@@ -104,8 +104,8 @@ try {
 </section>
 
 <!-- Testimonials Section -->
-<section id="testimonials" class="container text-light section bg-dark">
-    <h2 class="text-center">What People Say</h2>
+<section id="testimonials" class="container-md text-light section bg-dark">
+    <h2 class="text-center text-warning">What People Say</h2>
     <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <?php
@@ -132,7 +132,7 @@ try {
 </section>
 
 <!-- Feedback Section -->
-<section id="feedback" class="container text-light section">
+<section id="feedback" class="container-md text-light section">
     <h2 class="text-center fw-bold text-warning">Submit Your Feedback</h2>
     <form method="POST" action="logic/add-feedback.php">
         <input type="text" name="name" class="form-control mb-2" placeholder="Your Name" required>
@@ -142,9 +142,9 @@ try {
 </section>
 
 <!-- Contact Section -->
-<section id="contact" class="container text-light section">
+<section id="contact" class="container-md text-light section">
     <h2 class="text-center fw-bold text-warning">Contact MUST University</h2>
-    <p class="text-center">📧 Email: info@must.edu.pk | 📞 Phone: +92-XXXX-XXXXXX</p>
+    <p class="text-center">📧 Email: info@must.edu.pk | 📞 Phone: +92-5827-961037</p>
 </section>
 
 <!-- Footer -->

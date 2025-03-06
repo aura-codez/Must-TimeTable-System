@@ -15,6 +15,15 @@ The MUST Timetable Management System is a web-based scheduling platform designed
 - Manage Teacher Availability to avoid conflicts.
 - Approve/Reject Timetable Change Requests.
 
+
+  Login Details
+
+  1-Super Admin(superadmin@must.edu.pk, 123)
+  2-Department Admin(admin.se@must.edu.pk, 456) (same for other admins like admin.cse, admin.it, admin.cs.....)
+  3-Teacher(saman@must.edu.pk, 789)
+  4-Student(FA22-BSE-020, 1234)
+
+  
 🔹 Teacher Panel
 ✔ Login & View Assigned Classes.
 ✔ Request Timetable Changes.
@@ -26,6 +35,16 @@ The MUST Timetable Management System is a web-based scheduling platform designed
 🔹 Super Admin Panel
 ✔ Manage All Departments.
 ✔ Assign Departmental Admins.
+
+
+🔹  Admin Panel
+✔ Add subject details
+✔ Add rooms
+✔ assign teachers, rooms ,set duration for each session
+✔ Generate Timetable
+✔ Manage Timetable
+✔ Viw teachers request
+
 
  Tech Stack
 🔹 Frontend: HTML, CSS, Bootstrap, JavaScript
